@@ -86,12 +86,7 @@ const Wrap = styled(Link)`
 `
 
 const ProjectCard = props => (
-  <Wrap
-    data-sal="slide-up"
-    data-sal-easing="ease"
-    data-sal-duration="1000"
-    to={`portfolio/${slugify(props.Name)}`}
-  >
+  <Wrap to={`portfolio/${slugify(props.Name)}`}>
     <ProjectImg fluid={props.Img} />
     <ProjectTitle>{props.Name}</ProjectTitle>
     <ProjectLocation>{props.Location}</ProjectLocation>
