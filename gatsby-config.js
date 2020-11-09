@@ -3,7 +3,7 @@ module.exports = {
     title: `My Big Day - Dekoracje i kwiaty - śluby, eventy, sesje zdjęciowe`,
     description: `MyBigDay - dekoracje ślubne, scenografie do eventów i sesji zdjęciowych, wypożyczalnia artykułów dekoracyjnych.`,
     url: `https://www.mybigday.pl`,
-    image: "/images/cover.jpg", // Path to your image you placed in the 'static' folder
+    image: "/images/cover.jpg", // Path to your image you placed in the 'static' folder...
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
