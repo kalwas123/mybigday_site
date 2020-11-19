@@ -22,7 +22,7 @@ const NavigationWraper = styled.nav`
   left: 50%;
   transform: translateX(-50%);
   top: 0;
-  z-index: 999;
+  z-index: 1;
   @media ${device.laptop} {
     width: calc(100% - 100px);
     padding-left: 50px;

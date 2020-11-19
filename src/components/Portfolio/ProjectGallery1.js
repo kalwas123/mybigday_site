@@ -51,7 +51,6 @@ const TestGalerry = props => {
                 srcSet: x.srcSet,
                 width: x.width,
                 height: x.height,
-                caption: x.title,
               }))}
             />
           </Modal>

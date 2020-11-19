@@ -3,7 +3,7 @@ import styled from "styled-components"
 import SEO from "src/components/SEO"
 import { device } from "src/components/brakePoints"
 import { graphql } from "gatsby"
-import GImg from "gatsby-image"
+import Img from "gatsby-image"
 
 import ReactMarkdown from "react-markdown"
 import MainNav from "src/components/Navigation.js"
@@ -11,7 +11,7 @@ import MainWrap from "src/components/MainWrap"
 import Paragraph from "src/components/Texts/Paragraph"
 import ProjectGallery from "src/components/Portfolio/ProjectGallery1.js"
 
-const HeaderImg = styled(GImg)`
+const HeaderImg = styled(Img)`
   margin-top: 250px;
   margin: 250px 50px 100px 50px;
   width: calc(100% - 100px);
@@ -94,9 +94,10 @@ const ProjectTemplate = ({ data }) => {
       src: document.localFile.childImageSharp.fluid.src,
       width: document.width,
       height: document.height,
-      srcSet: document.localFile.childImageSharp.sizes.srcSet,
+      srcSet: document.localFile.childImageSharp.fluid.srcSet,
     }
     photos.push(newImg)
+    console.log(document.localFile.childImageSharp)
   })
   // const source = data.strapiWedding.Description.replace(/\n/gi, "\n &nbsp;")
 
@@ -161,9 +162,11 @@ export const query = graphql`
             sizes {
               srcSet
             }
-            fluid {
+
+            fluid(maxWidth: 1600) {
               ...GatsbyImageSharpFluid_tracedSVG
               src
+              srcSet
             }
           }
         }
