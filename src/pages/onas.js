@@ -27,8 +27,10 @@ const HeaderWrap = styled.div`
   }
   @media ${device.tabletS} {
     flex-wrap: wrap;
+    height: auto;
     .header_text-wrap {
       width: calc(100% - 40px);
+
       margin-left: 40px;
       flex-grow: 1;
     }
