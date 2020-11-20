@@ -146,7 +146,7 @@ const NavigationListItem = styled.li`
     position: absolute;
     left: -8px;
     top: calc(50% + 2px);
-    width: 50px;
+    width: 40px;
     height: 1px;
     background-color: #606060;
     transform: translate(-100%, 0);
@@ -167,7 +167,7 @@ const NavigationListItem = styled.li`
   }
 
   @media ${device.laptop} {
-    margin-left: 100px;
+    margin-left: 80px;
   }
   @media ${device.tablet} {
     font-size: 25px;
@@ -228,6 +228,16 @@ class Navigation extends React.Component {
           >
             <Link to="/onas/" activeClassName="navActive">
               o nas
+            </Link>
+          </NavigationListItem>
+          <NavigationListItem
+            data-sal="slide-up"
+            data-sal-delay="300"
+            data-sal-easing="ease"
+            data-sal-duration="1000"
+          >
+            <Link to="/wypozyczalnia/" activeClassName="navActive">
+              wypożyczalnia
             </Link>
           </NavigationListItem>
           <NavigationListItem

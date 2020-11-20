@@ -69,7 +69,6 @@ module.exports = {
       resolve: `gatsby-plugin-sharp`,
       options: {
         defaultQuality: 100,
-        maxWidth: 1600,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
