@@ -78,6 +78,18 @@ module.exports = {
         defaultQuality: 100,
       },
     },
+    {
+      resolve: `gatsby-plugin-pinterest`,
+      options: {
+        // If you just want to use the default, you can set this to `true`, defaults to `false`
+        saveButton: {
+          // Set to true to hide the text and display only a round P button
+          round: false, // default
+          // Set to true to display a bigger button
+          tall: true, // default
+        },
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
   ],

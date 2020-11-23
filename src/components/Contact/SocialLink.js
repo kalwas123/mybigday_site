@@ -48,7 +48,9 @@ const Person = props => (
     data-sal-easing="ease"
     data-sal-duration="1000"
   >
-    <NameLink href={`${props.linkTo}`}>{props.name}</NameLink>
+    <NameLink target={"blank"} href={`${props.linkTo}`}>
+      {props.name}
+    </NameLink>
     <Separator />
   </Wrap>
 )
