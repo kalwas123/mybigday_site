@@ -166,15 +166,15 @@ class contactPage extends React.Component {
           <>
             <SEO
               title={
-                this.props.data.allStrapiPagePortfolio.edges[0].node.SEO_Title
+                this.props.data.allStrapiPageRental.edges[0].node.SEO_Title
               }
               description={
-                this.props.data.allStrapiPagePortfolio.edges[0].node
+                this.props.data.allStrapiPageRental.edges[0].node
                   .SEO_Description
               }
               image={
-                this.props.data.allStrapiPagePortfolio.edges[0].node.SEO_Img[0]
-                  .localFile.publicURL
+                this.props.data.allStrapiPageRental.edges[0].node.SEO_Img
+                  .publicURL
               }
             />
             <MainNav col />
@@ -188,7 +188,7 @@ class contactPage extends React.Component {
                   data-sal-easing="ease"
                   data-sal-duration="1000"
                 >
-                  {this.props.data.strapiPagePortfolio.Title}
+                  {this.props.data.strapiPageRental.Title}
                 </Title>
                 <HeaderParagraph
                   data-sal="slide-up"
@@ -196,7 +196,7 @@ class contactPage extends React.Component {
                   data-sal-easing="ease"
                   data-sal-duration="1000"
                 >
-                  {this.props.data.strapiPagePortfolio.Description}
+                  {this.props.data.strapiPageRental.Description}
                 </HeaderParagraph>
               </MainWrap>
             </HeaderWrap>
@@ -208,19 +208,23 @@ class contactPage extends React.Component {
                   data-sal-easing="ease"
                   data-sal-duration="1000"
                 >
-                  {this.props.data.allStrapiOffer.edges.map(document => (
-                    <NavElement
-                      className={
-                        document.node.strapiId - 1 === data.offerNum - 1
-                          ? "offerActive"
-                          : null
-                      }
-                      onClick={() => set({ offerNum: document.node.strapiId })}
-                      // onClick={() => this.changeOffer(document.node.strapiId)}
-                    >
-                      {document.node.Title}
-                    </NavElement>
-                  ))}
+                  {this.props.data.allStrapiRentalCategories.edges.map(
+                    document => (
+                      <NavElement
+                        className={
+                          document.node.strapiId - 1 === data.offerNum - 1
+                            ? "offerActive"
+                            : null
+                        }
+                        onClick={() =>
+                          set({ offerNum: document.node.strapiId })
+                        }
+                        // onClick={() => this.changeOffer(document.node.strapiId)}
+                      >
+                        {document.node.Title}
+                      </NavElement>
+                    )
+                  )}
                 </PortfolioNav>
 
                 <OfferDescription
@@ -229,19 +233,19 @@ class contactPage extends React.Component {
                   data-sal-duration="1000"
                 >
                   {
-                    this.props.data.allStrapiOffer.edges[
+                    this.props.data.allStrapiRentalCategories.edges[
                       data.offerNum ? data.offerNum - 1 : 0
                     ].node.Description
                   }
                 </OfferDescription>
                 <ProjectsWrap>
-                  {this.props.data.allStrapiOffer.edges[
+                  {this.props.data.allStrapiRentalCategories.edges[
                     data.offerNum ? data.offerNum - 1 : 0
-                  ].node.projects.map(document => (
+                  ].node.rental_products.map(document => (
                     <ProjectCard
                       Img={document.Thumbnail.childImageSharp.fluid}
                       Name={document.Name}
-                      Location={document.Location}
+                      Category={"/wypozyczalnia/"}
                     />
                   ))}
                 </ProjectsWrap>
@@ -258,17 +262,14 @@ export default contactPage
 
 export const portfolioQuery = graphql`
   query Wypozyczalnia {
-    allStrapiOffer {
+    allStrapiRentalCategories {
       edges {
         node {
           Title
           Description
           strapiId
-          projects {
+          rental_products {
             Name
-            Location
-            offer
-            id
             Thumbnail {
               childImageSharp {
                 fluid {
@@ -280,19 +281,17 @@ export const portfolioQuery = graphql`
         }
       }
     }
-    strapiPagePortfolio {
+    strapiPageRental {
       Title
       Description
     }
-    allStrapiPagePortfolio {
+    allStrapiPageRental {
       edges {
         node {
           SEO_Description
           SEO_Title
           SEO_Img {
-            localFile {
-              publicURL
-            }
+            publicURL
           }
         }
       }

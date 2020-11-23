@@ -129,7 +129,7 @@ const Hamburger = styled.button`
 `
 
 const NavigationListItem = styled.li`
-  margin-left: 150px;
+  margin-left: 120px;
   position: relative;
 
   a {

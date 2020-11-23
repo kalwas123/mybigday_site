@@ -66,4 +66,27 @@ exports.createPages = async ({ graphql, actions }) => {
       context: { id: post.node.id },
     })
   })
+  const productTemplate = path.resolve(`src/layouts/product.js`)
+
+  const resultProducts = await graphql(`
+    query queryProducts {
+      allStrapiRentalProducts {
+        edges {
+          node {
+            id
+            Name
+          }
+        }
+      }
+    }
+  `)
+
+  resultProducts.data.allStrapiRentalProducts.edges.forEach(post => {
+    const slugifedTitle = slugify(post.node.Name)
+    createPage({
+      path: "wypozyczalnia/" + slugifedTitle,
+      component: productTemplate,
+      context: { id: post.node.id },
+    })
+  })
 }

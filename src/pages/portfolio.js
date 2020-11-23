@@ -242,6 +242,7 @@ class contactPage extends React.Component {
                       Img={document.Thumbnail.childImageSharp.fluid}
                       Name={document.Name}
                       Location={document.Location}
+                      Category={"/portfolio/"}
                     />
                   ))}
                 </ProjectsWrap>

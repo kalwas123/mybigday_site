@@ -86,7 +86,7 @@ const Wrap = styled(Link)`
 `
 
 const ProjectCard = props => (
-  <Wrap to={`/portfolio/${slugify(props.Name)}`}>
+  <Wrap to={`${props.Category}${slugify(props.Name)}`}>
     <ProjectImg fluid={props.Img} />
     <ProjectTitle>{props.Name}</ProjectTitle>
     <ProjectLocation>{props.Location}</ProjectLocation>
