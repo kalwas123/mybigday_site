@@ -200,7 +200,7 @@ const SocialWrap = styled.div`
 
 const SocialTextStar = styled(MidText)`
   position: relative;
-  z-index: 2;
+  z-index: 0;
   width: 66.66%;
   &::before {
     content: "";
