@@ -487,7 +487,7 @@ export const query = graphql`
         }
       }
     }
-    allStrapiOffer {
+    allStrapiOffer(sort: { order: ASC, fields: Order }) {
       edges {
         node {
           Short_Description

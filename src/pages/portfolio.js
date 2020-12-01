@@ -164,6 +164,16 @@ class contactPage extends React.Component {
       <ContextConsumer>
         {({ data, set }) => (
           <>
+            {console.log(
+              this.props.data.allStrapiOffer.edges[
+                data.offerNum ? data.offerNum - 1 : 0
+              ].node.projects
+                // .sort(
+                //   ({ Order: previousID }, { Order: currentID }) =>
+                //     previousID - currentID
+                // )
+                .sort((a, b) => (a.Order > b.Order ? 1 : -1))
+            )}
             <SEO
               title={
                 this.props.data.allStrapiPagePortfolio.edges[0].node.SEO_Title
@@ -235,7 +245,7 @@ class contactPage extends React.Component {
                   }
                 </OfferDescription>
                 <ProjectsWrap>
-                  {this.props.data.allStrapiOffer.edges[
+                  {/* {this.props.data.allStrapiOffer.edges[
                     data.offerNum ? data.offerNum - 1 : 0
                   ].node.projects.map(document => (
                     <ProjectCard
@@ -244,7 +254,35 @@ class contactPage extends React.Component {
                       Location={document.Location}
                       Category={"/portfolio/"}
                     />
-                  ))}
+                  ))} */}
+                  {
+                    this.props.data.allStrapiOffer.edges[
+                      data.offerNum ? data.offerNum - 1 : 0
+                    ].node.projects
+                      // .sort(
+                      //   ({ Order: previousID }, { Order: currentID }) =>
+                      //     previousID - currentID
+                      // )
+                      .sort((a, b) => (a.Order > b.Order ? 1 : -1))
+                      .map(document => (
+                        <ProjectCard
+                          Img={document.Thumbnail.childImageSharp.fluid}
+                          Name={document.Name}
+                          Location={document.Location}
+                          Category={"/portfolio/"}
+                        />
+                      ))
+                    // .map(({ id, headline }) => (
+                    //   <Container>
+                    //     <Row key={id}>
+                    //       <Col>
+                    //         <p>id={id}</p>
+                    //         <p>headline={headline}</p>
+                    //       </Col>
+                    //     </Row>
+                    //   </Container>
+                    // ))}
+                  }
                 </ProjectsWrap>
               </MainWrap>
             </PortfolioSection>
@@ -259,7 +297,7 @@ export default contactPage
 
 export const portfolioQuery = graphql`
   query Offer {
-    allStrapiOffer {
+    allStrapiOffer(sort: { order: ASC, fields: Order }) {
       edges {
         node {
           Title
@@ -270,6 +308,7 @@ export const portfolioQuery = graphql`
             Location
             offer
             id
+            Order
             Thumbnail {
               childImageSharp {
                 fluid {
