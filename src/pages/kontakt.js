@@ -10,6 +10,8 @@ import Paragraph from "src/components/Texts/Paragraph"
 import star from "src/assets/svg/star_grey.svg"
 import Person from "src/components/Contact/Person"
 import SocialLink from "src/components/Contact/SocialLink"
+import ReactMarkdown from "react-markdown"
+
 // import { Link } from "gatsby"
 
 const Header = styled.header`
@@ -22,7 +24,7 @@ const Header = styled.header`
   justify-content: space-between;
   align-items: flex-end;
 
-  div {
+  > div {
     position: relative;
     width: 41.66%;
   }
@@ -42,6 +44,12 @@ const Header = styled.header`
 
 const HeaderParagraph = styled(Paragraph)`
   margin-top: 25px;
+  width: 100%;
+  .marginP {
+    p {
+      margin-bottom: 20px;
+    }
+  }
 `
 const HeaderStar = styled.img`
   margin-bottom: 35px;
@@ -96,7 +104,11 @@ const contactPage = ({ data }) => (
             data-sal-easing="ease"
             data-sal-duration="1000"
           >
-            {data.strapiPageContact.Description}
+            <ReactMarkdown
+              className={"marginP"}
+              // parserOptions={{ commonmark: true }}
+              source={data.strapiPageContact.Description}
+            />
           </HeaderParagraph>
         </div>
         <HeaderStar
